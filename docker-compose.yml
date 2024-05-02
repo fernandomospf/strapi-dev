@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  strapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1337:1337"
+    environment:
+      NODE_ENV: production
+    volumes:
+      - .:/usr/src/app
+    command: npm run strapi develop
