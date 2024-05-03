@@ -10,6 +10,6 @@ COPY . .
 
 EXPOSE 1338
 
-ENV NODE_ENV=develop
+ENV NODE_ENV=development
 
 CMD ["npm", "run", "develop"]
