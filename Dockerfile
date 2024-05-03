@@ -10,6 +10,6 @@ COPY . .
 
 EXPOSE 1337
 
-ENV NODE_ENV=develop
+ENV NODE_ENV=development
 
-CMD ["npm", "run", "strapi develop"]
+CMD ["npm", "run develop"]

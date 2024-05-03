@@ -8,7 +8,7 @@ services:
     ports:
       - "1337:1337"
     environment:
-      NODE_ENV: develop
+      NODE_ENV: development
     volumes:
       - .:/usr/src/app
-    command: npm run strapi develop
+    command: npm run develop
