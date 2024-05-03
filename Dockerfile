@@ -12,4 +12,4 @@ EXPOSE 1337
 
 ENV NODE_ENV=development
 
-CMD ["npm", "run develop"]
+CMD ["npm", "run", "develop"]
