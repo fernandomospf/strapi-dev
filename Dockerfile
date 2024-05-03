@@ -12,4 +12,4 @@ EXPOSE 1337
 
 ENV NODE_ENV=develop
 
-CMD ["npm", "strapi develop"]
+CMD ["npm", "run", "develop"]

@@ -8,7 +8,7 @@ services:
     ports:
       - "1337:1337"
     environment:
-      NODE_ENV: development
+      NODE_ENV: develop
     volumes:
       - .:/usr/src/app
     command: npm run develop
