@@ -362,49 +362,38 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiWorkExperienceWorkExperience extends Schema.CollectionType {
-  collectionName: 'work_experiences';
+export interface ApiMessagePtBrMessagePtBr extends Schema.CollectionType {
+  collectionName: 'messages_pt_br';
   info: {
-    singularName: 'work-experience';
-    pluralName: 'work-experiences';
-    displayName: 'work_experience';
+    singularName: 'message-pt-br';
+    pluralName: 'messages-pt-br';
+    displayName: 'message-pt-BR';
   };
   options: {
     draftAndPublish: false;
   };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
   attributes: {
-    position: Attribute.String &
+    label: Attribute.String &
       Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 20;
       }>;
+    value: Attribute.Text & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::work-experience.work-experience',
+      'api::message-pt-br.message-pt-br',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::work-experience.work-experience',
+      'api::message-pt-br.message-pt-br',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::work-experience.work-experience',
-      'oneToMany',
-      'api::work-experience.work-experience'
-    >;
-    locale: Attribute.String;
   };
 }
 
@@ -844,7 +833,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::work-experience.work-experience': ApiWorkExperienceWorkExperience;
+      'api::message-pt-br.message-pt-br': ApiMessagePtBrMessagePtBr;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
