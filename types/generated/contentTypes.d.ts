@@ -362,37 +362,29 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiMessagePtBrMessagePtBr extends Schema.CollectionType {
-  collectionName: 'messages_pt_br';
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
   info: {
-    singularName: 'message-pt-br';
-    pluralName: 'messages-pt-br';
-    displayName: 'message-pt-BR';
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'post';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    label: Attribute.String &
+    title: Attribute.String & Attribute.Required;
+    content: Attribute.RichText & Attribute.Required;
+    likes: Attribute.BigInteger & Attribute.Required & Attribute.DefaultTo<'0'>;
+    image: Attribute.Media & Attribute.Required;
+    author: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 20;
-      }>;
-    value: Attribute.Text & Attribute.Required;
+      Attribute.DefaultTo<'Fernando M\u00F3s'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::message-pt-br.message-pt-br',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::message-pt-br.message-pt-br',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -833,7 +825,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::message-pt-br.message-pt-br': ApiMessagePtBrMessagePtBr;
+      'api::post.post': ApiPostPost;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
